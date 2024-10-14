@@ -1,4 +1,5 @@
 const main = document.getElementsByClassName("main")[0];
+const slide = document.getElementById("slide");
 let index = 0;
 let questions = [intro,services];
 let lista = []
@@ -6,7 +7,7 @@ let lista = []
 function intro(){
     div1 = document.createElement("div");
     div1.setAttribute("class","bot");
-    div1.innerHTML = "<p>Olá, tudo bem? Sou a assistente virtual do(a) Bonatto Barbeshop 099 e cuido do agendamento dos serviços dos profissionais dele(a), ok?</p>";    
+    div1.innerHTML = "<p>Olá, tudo bem? Sou a assistente virtual do(a) Bonatto Barbeshop 099 e cuido do agendamento dos serviços dos profissionais dele(a), ok?</p><p>Qual o seu nome? Escreva seu nome e sobrenome, por favor.</p>";    
     console.log(div1);
     main.appendChild(div1);
     inputName();
@@ -16,7 +17,7 @@ function inputName(){
     div = document.createElement("div");
     div.setAttribute("class",'input');
     div.setAttribute("id","divInput");
-    div.innerHTML = "<input id = 'name' type='text'><button id = 'btn1'>enviar</button>";
+    div.innerHTML = "<input id = 'name' type='text'><button id = 'btn1'>Enviar</button>";
     main.appendChild(div);
     
     document.getElementById("btn1").addEventListener("click",function(event){
@@ -31,9 +32,15 @@ function inputName(){
 
 function services(nome){
     //Mensagem
-    div1 = document.createElement("div");
+    let divName = document.createElement("div");
+    divName.setAttribute("class","user");
+    divName.innerHTML = `<p class = 'name'>${nome}</p>`;  
+    main.appendChild(divName);
+
+
+    let div1 = document.createElement("div");
     div1.setAttribute("class","bot");
-    div1.innerHTML = `<p>Como vai, ${nome}! Tudo bem?</p>`;    
+    div1.innerHTML = `<p>Como vai, ${nome}! Tudo bem?</p><p>Por qual serviço você está procurando?</p>`;    
     console.log(div1);
     main.appendChild(div1);
 
@@ -47,15 +54,5 @@ function services(nome){
     Corte,barba,hidratação,sobrancelha,limpeza de pele
     */  
 }
-
-
-
-
-
-
-
-
-
-
 
 intro();

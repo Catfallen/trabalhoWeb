@@ -1,37 +1,125 @@
-html,body{
-    height: 100%;
-    color: white;
-    background-color:rgb(25,25,25);
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext');
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext');
+
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.main{
+html,
+body {
+    height: 100%;
+    color: white;
+    background-color: rgb(25, 25, 25);
+}
+
+
+body {
+    padding: 10% 14%;
+}
+
+.main {
     display: flex;
     flex-direction: column;
     height: 100%;
-
 }
 
-.bot{
+.bot {
     box-sizing: border-box;
-    display: flex;
     justify-content: left;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-.bot p{
-    width: 65%;
-    height: 100%;
-    background-color:rgb(30, 30, 150);
+p {
+    display: block;/* Cada parágrafo ocupa toda a linha */
+    width: fit-content;/* Ajusta a largura ao conteúdo *//* Cor de fundo opcional */
+/* Espaçamento interno */
+/* Espaçamento entre os parágrafos */
+    border-radius: 10px;/* Bordas arredondadas */
+    margin-top: 15px;
+}
+
+
+.bot p {/*"Open Sans", sans-serif*/
+    padding: 18px;
+    background-color: rgb(30, 30, 150);
     border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    flood-opacity: 1;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    font-stretch: 100%;
 }
 
-.user{
+
+.user {
+    text-align: right;
+    display: flex;
     width: 100%;
     justify-content: right;
 }
 
-.input{
+
+.name{
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    flood-opacity: 1;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+    font-stretch: 100%;
+    background: rgba(0, 0, 0, 0) linear-gradient(169deg, rgba(230, 230, 230, 0.79), rgba(230, 230, 230, 0.45)) repeat scroll 0% 0% / auto padding-box border-box;
+}
+
+
+
+.input {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
+
+
+.input button{
+    width: 100%;
+    max-width: 1000px;
+    font-size: 16px;
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+    background: rgba(0, 0, 0, 0) linear-gradient(169deg, rgb(123, 127, 136), rgba(124, 128, 136, 0.376)) repeat scroll 0% 0% / auto padding-box border-box;
+    color: white;
+}
+
+input[type="text"] {
+    height: 40px;
+    text-align: center;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.14);
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    max-width: 1000px;
+    border: 0;
+    border-radius: 10px;
+    /* Arredondar bordas */
+    /* Espaçamento interno */
+    font-size: 16px;
+    /* Tamanho da fonte */
+    transition: border-color 0.3s;
+    /* Transição suave para a mudança de cor da borda */
+    margin-bottom: 6px;
+}
+
+input[type="text"]:focus {
+    
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Cor da borda ao focar */
+    outline: none;
+    /* Remove o contorno padrão */
+}
+
