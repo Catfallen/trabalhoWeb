@@ -1,7 +1,7 @@
 const today = new Date();
 let dayOfWeek = today.getDay();
 // Array de dias da semana
-const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado","Domingo", "Segunda-feira","Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
 // Obtendo o nome do dia da semana
 const dayName = days[dayOfWeek];
 
@@ -10,8 +10,8 @@ const dayName = days[dayOfWeek];
 
 let c = dayOfWeek;
 document.querySelectorAll('.slide').forEach(slide => {
-    slide.innerText = days[c];
-    c+= 1
+    //slide.innerText = days[c];
+    //c+= 1
     slide.addEventListener('click', (event) => {
         console.log(event.target.innerText)
         // Remove a classe 'active' de todas as slides

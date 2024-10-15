@@ -17,8 +17,8 @@ body {
 body {
     color: white;
     background-color: rgb(25, 25, 25);
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 17%;
+    padding-right: 17%;
 }
 
 .main {
@@ -99,7 +99,6 @@ p {
 
 input[type="text"] {
     height: 40px;
-    text-align: center;
     color: white;
     background-color: rgba(255, 255, 255, 0.14);
     box-sizing: border-box;

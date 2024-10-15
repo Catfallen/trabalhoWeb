@@ -34,3 +34,8 @@ inputName()
     
     //Corte,barba,hidratação,sobrancelha,limpeza de pele
     */  
+
+
+
+
+    <p>CORTE + BARBA + HIDRATAÇÃO + SOBRANCELHA + LIMPEZA DE PELE </p>

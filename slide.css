@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-}
-
 .slider-container {
     width: 100%;
     overflow-x: scroll; /* Ativa a barra de rolagem horizontal */
@@ -20,20 +16,19 @@ body {
 }
 
 .slide {
-    min-width: 300px; /* Largura mínima para os slides */
-    height: 200px;
+    min-width: fit-content; /* Largura mínima para os slides */
+    height: auto;
     margin: 10px;
     background-color: #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     font-size: 24px;
     color: #333;
     border-radius: 10px;
     flex-shrink: 0;
 }
-
-
 
 
 .slide.active {
