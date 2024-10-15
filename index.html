@@ -6,19 +6,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="sytle.css">
     <link rel="stylesheet" href="slide.css">
+
 </head>
 <body>
     <div class="main">
-        <div id = "slide" class="slider-container">
+        <div class="bot" style="display: none;">
+            <p>Olá, tudo bem? Sou a assistente virtual do(a) Bonatto Barbeshop 099 e cuido do agendamento dos serviços dos profissionais dele(a), ok?</p><p>Qual o seu nome? Escreva seu nome e sobrenome, por favor.</p>
+        </div>
+        <div class="input" style="display: none;">
+            <input id = 'name' type='text'><button id = 'btn1'>Enviar</button>
+        </div>
+
+        <div class="user" style="display: none;">
+        </div>
+
+        <div class="bot">
+            
+        </div>
+
+        <div id = "slide" class="slider-container" style="display: none;">
             <div class="slider">
-                <div class="slide">Slide 1</div>
-                <div class="slide">Slide 2</div>
-                <div class="slide">Slide 3</div>
-                <div class="slide">Slide 4</div>
-                <div class="slide">Slide 5</div>
+                <div class="slide"><img src="combo.png" alt=""></div>
+                <div class="slide"><img src="combo.png" alt=""></div>
+                <div class="slide"><img src="combo.png" alt=""></div>
+                <div class="slide"><img src="combo.png" alt=""></div>
+                <div class="slide"><img src="combo.png" alt=""></div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
+    <script src="slide.js"></script>
 </body>
 </html>

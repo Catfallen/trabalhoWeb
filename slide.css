@@ -16,6 +16,7 @@ body {
 
 .slider {
     display: flex;
+    height: fit-content;
 }
 
 .slide {
@@ -31,3 +32,41 @@ body {
     border-radius: 10px;
     flex-shrink: 0;
 }
+
+
+
+
+.slide.active {
+    background-color: #4caf50; /* Cor de fundo quando ativada */
+    color: white; /* Cor do texto quando ativada */
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-rows: repeat(8, 1fr); /* 8 linhas */
+    gap: 10px; /* Espaçamento entre as divs */
+    width: 80%; /* Largura do grid */
+    max-width: 800px; /* Largura máxima */
+}
+
+.time-slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Altura completa */
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.time-slot.active {
+    background-color: #007BFF; /* Cor de fundo da div ativa */
+    border-color: #0056b3; /* Borda da div ativa */
+    color: #fff; /* Cor do texto da div ativa */
+}
+
+

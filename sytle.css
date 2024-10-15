@@ -10,13 +10,15 @@
 html,
 body {
     height: 100%;
-    color: white;
-    background-color: rgb(25, 25, 25);
+    
 }
 
 
 body {
-    padding: 10% 14%;
+    color: white;
+    background-color: rgb(25, 25, 25);
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .main {
@@ -43,7 +45,7 @@ p {
 
 
 .bot p {/*"Open Sans", sans-serif*/
-    padding: 18px;
+    padding: 15px;
     background-color: rgb(30, 30, 150);
     border-radius: 10px;
     font-size: 15px;
@@ -57,7 +59,7 @@ p {
 
 .user {
     text-align: right;
-    display: flex;
+    display: none; /*flex*/
     width: 100%;
     justify-content: right;
 }
@@ -78,7 +80,7 @@ p {
 
 
 .input {
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     align-items: center;
 }
@@ -87,7 +89,7 @@ p {
 .input button{
     width: 100%;
     max-width: 1000px;
-    font-size: 16px;
+    font-size: 15px;
     height: 40px;
     border-radius: 10px;
     border: 0;
@@ -122,4 +124,3 @@ input[type="text"]:focus {
     outline: none;
     /* Remove o contorno padrão */
 }
-

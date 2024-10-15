@@ -1,25 +1,25 @@
+
+
 const main = document.getElementsByClassName("main")[0];
 const slide = document.getElementById("slide");
 let index = 0;
 let questions = [intro,services];
 let lista = []
 
+window.addEventListener('load',()=>{
+    intro();
+});
+
 function intro(){
-    div1 = document.createElement("div");
-    div1.setAttribute("class","bot");
-    div1.innerHTML = "<p>Olá, tudo bem? Sou a assistente virtual do(a) Bonatto Barbeshop 099 e cuido do agendamento dos serviços dos profissionais dele(a), ok?</p><p>Qual o seu nome? Escreva seu nome e sobrenome, por favor.</p>";    
-    console.log(div1);
-    main.appendChild(div1);
+    let div = document.getElementsByClassName("bot")[0];
+    div.style.display = "block";
     inputName();
 }
 
 function inputName(){
-    div = document.createElement("div");
-    div.setAttribute("class",'input');
-    div.setAttribute("id","divInput");
-    div.innerHTML = "<input id = 'name' type='text'><button id = 'btn1'>Enviar</button>";
-    main.appendChild(div);
     
+    let div = document.getElementsByClassName("input")[0];
+    div.style.display = "flex";
     document.getElementById("btn1").addEventListener("click",function(event){
         if(document.getElementById("name").value){
             let name = document.getElementById('name').value;
@@ -27,32 +27,21 @@ function inputName(){
             services(name);
         }
     });
-
 }
 
 function services(nome){
     //Mensagem
-    let divName = document.createElement("div");
-    divName.setAttribute("class","user");
-    divName.innerHTML = `<p class = 'name'>${nome}</p>`;  
-    main.appendChild(divName);
+    let divName = document.getElementsByClassName("user")[0];
+    
+    divName.innerHTML = `<p class = 'name'>${nome}</p>`;
+    divName.style.display = "flex";  
 
-
-    let div1 = document.createElement("div");
-    div1.setAttribute("class","bot");
+    let div1 = document.getElementsByClassName("bot")[1];
     div1.innerHTML = `<p>Como vai, ${nome}! Tudo bem?</p><p>Por qual serviço você está procurando?</p>`;    
-    console.log(div1);
-    main.appendChild(div1);
+    div1.style.display = "block";
 
-    //Slide
-    div.setAttribute("class","bot");
-    div = document.createElement("div");
-    div.setAttribute("class",'input');
-    div.innerHTML = `<div></div><button>enviar</button>`;
-    main.appendChild(div);
-    /*
-    Corte,barba,hidratação,sobrancelha,limpeza de pele
-    */  
+    document.getElementById("slide").style.display = "flex";
+    document.getElementById("slide").scrollIntoView({ behavior: "smooth" });
 }
 
-intro();
+//intro();
