@@ -16,7 +16,8 @@
 }
 
 .slide {
-    min-width: fit-content; /* Largura mínima para os slides */
+    min-width: 25%;
+    max-width: 200px;
     height: auto;
     margin: 10px;
     background-color: #f1f1f1;
@@ -29,6 +30,7 @@
     border-radius: 10px;
     flex-shrink: 0;
 }
+
 
 
 .slide.active {
@@ -64,4 +66,46 @@
     color: #fff; /* Cor do texto da div ativa */
 }
 
+.slide img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse o limite do slide */
+    height: auto;
+}
 
+.slide p {
+    margin-top: 10px; /* Adiciona espaço entre a imagem e o parágrafo */
+    font-size: 10px;
+    color: #333;
+    text-align: center;
+    word-wrap: break-word; /* Quebra o texto automaticamente quando exceder a largura */
+    white-space: normal;   /* Permite quebra de linha no texto */
+}
+
+.bet{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.bet span:nth-of-type(2){
+    font-size: 15px;
+    text-align: right;
+}
+
+/* Media Query para telas menores que 1000px */
+@media (max-width: 1000px) {
+    .slider {
+        flex-direction: row; /* Muda a direção para coluna em telas menores */
+        align-items: center;    /* Centraliza os slides */
+    }
+
+    .slide {
+        min-width: 30%; /* Ajusta o tamanho do slide para ocupar mais espaço na tela */
+        margin: 5px;    /* Reduz as margens para telas menores */
+        font-size: 15px; /* Ajusta o tamanho da fonte para ficar proporcional */
+    }
+    .slider-container {
+        overflow-y: hidden; /* Desativa o scroll horizontal no slider */
+    }
+    .slide p {
+        font-size: 14px; /* Diminui o tamanho do texto do parágrafo */
+    }
+}
