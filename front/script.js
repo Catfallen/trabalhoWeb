@@ -7,8 +7,8 @@ let questions = [intro,services];
 let lista = []
 
 window.addEventListener('load',()=>{
-    //intro();
-    services("markim");
+    intro();
+    //services("markim");
 });
 
 function intro(){
