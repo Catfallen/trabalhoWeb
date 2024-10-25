@@ -1,15 +1,8 @@
 import psycopg2
 from datetime import datetime
 
-
-#print("[1] - Inserir")
-#print("[2] - Vizualizar")
-#op = input("Digite aqui")
-
-
-#if op == "1":
 try:
-    connection = psycopg2.connect(
+    con = psycopg2.connect(
         host="localhost",        # ou o endereço do seu servidor PostgreSQL
         database="web", # nome do seu banco de dados
         user="postgres",       # seu nome de usuário no PostgreSQL
@@ -19,19 +12,26 @@ try:
     ano = data.year
     mes = data.month
     day = data.day
-
+    dataString = f"{ano}-{mes}-{day}"
+    cursor = con.cursor()
     for x in range(800,1850,50):
         string = str(x)
-        print(f"{string[:2]} {string[-2:]}")
+        if x < 1000:
+            string = "0"+string
+        a = string[:2]
+        b = string[-2:]
+        if b == "50":
+            b = "30"
+        print(f"{string[:2]} {b}")
         #print(f"{x.}")
-    dataString = f"{ano}-{mes}-{day}"
-    print(dataString)
-    # Criar um cursor para executar as consultas
-    cursor = connection.cursor()
     
     # Exemplo: Executando uma consulta SQL
-    #cursor.execute("insert into horarios (dia,horas);")
-    
+        stringab = a+b
+        try:    
+            cursor.execute("""insert into horarios (dia,horas,ativo) values (%s,%s,%s);""",(dataString,stringab,0))
+        except Exception as error:
+            print(error)
+    con.commit()
     # Obter os resultados
     #db_version = cursor.fetchone()
     #print(f"Versão do PostgreSQL: {db_version}")
@@ -40,10 +40,10 @@ except Exception as error:
     print(f"Erro ao conectar ao banco de dados: {error}")
 
 finally:
-    if connection:
+    if con:
         # Fechar o cursor e a conexão
         cursor.close()
-        connection.close()
+        con.close()
         print("Conexão com o PostgreSQL foi encerrada.")
     
 # Conectar ao banco de dados
