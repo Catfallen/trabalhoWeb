@@ -32,3 +32,4 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         slot.classList.add('active');
     });
 });
+

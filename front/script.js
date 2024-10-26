@@ -31,7 +31,6 @@ function inputName(){
 }
 
 function services(nome){
-    //Mensagem
     let divName = document.getElementsByClassName("user")[0];
     
     divName.innerHTML = `<p class = 'name'>${nome}</p>`;
@@ -43,6 +42,17 @@ function services(nome){
 
     document.getElementById("slide").style.display = "flex";
     document.getElementById("slide").scrollIntoView({ behavior: "smooth" });
+
+    let slides = document.getElementsByClassName("slide");
+    console.log(slides)
+
+    //console.log(document.getElementsByClassName("input")[1])//style.display = 'flex';
+    let input3 = document.getElementsByName("input3")[0]
+    input3.style.display = "flex";
+    input3.getElementsByTagName("button")[0].addEventListener("click",()=>{
+
+    });
+
 }
 
 //intro();
