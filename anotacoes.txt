@@ -1,0 +1,11 @@
+
+
+
+//Selecionar informações de todas as tabelas com apenas o id do agendamento;
+
+SELECT clientes.id, clientes.nome,clientes.celular,horarios.dia,horarios.horas,servicos.nome as servicoNome
+FROM agendamento
+JOIN clientes ON agendamento.idCliente = clientes.id 
+JOIN horarios ON agendamento.idHorario =horarios.id
+JOIN servicos ON agendamento.idServico = servicos.id
+WHERE agendamento.idCliente = 1;
