@@ -26,6 +26,16 @@ const UserController = {
             console.error("Error fetching user:", error); // Adicionado log de erro
             res.status(500).json({ error: "Error fetching user" });
         }
+    },
+    createUser: async (req, res) => {
+        const { nome, celular } = req.body;
+        try {
+            const newUser = await User.postNewUser(nome, celular);
+            res.status(201).json(newUser);  // 201 Created
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Erro ao criar novo usuário' });
+        }
     }
 };
 

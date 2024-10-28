@@ -12,7 +12,7 @@ let c = dayOfWeek;
 document.querySelectorAll('.slide').forEach(slide => {
     slide.innerText = days[c];
     c+= 1
-    if c > days.length
+    //if c > days.length
     
     slide.addEventListener('click', (event) => {
         console.log(event.target.innerText)
@@ -24,7 +24,6 @@ document.querySelectorAll('.slide').forEach(slide => {
     });
 });
 
-
 document.querySelectorAll('.time-slot').forEach(slot => {
     slot.addEventListener('click', () => {
         // Remove a classe 'active' de todas as divs
@@ -34,3 +33,4 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         slot.classList.add('active');
     });
 });
+

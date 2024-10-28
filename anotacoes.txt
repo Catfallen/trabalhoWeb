@@ -9,3 +9,18 @@ JOIN clientes ON agendamento.idCliente = clientes.id
 JOIN horarios ON agendamento.idHorario =horarios.id
 JOIN servicos ON agendamento.idServico = servicos.id
 WHERE agendamento.idCliente = 1;
+
+
+//Função de input remover opções a mostrar a escolhida
+function inputName(){
+    
+    let div = document.getElementsByClassName("input")[0];
+    div.style.display = "flex";
+    document.getElementById("btn1").addEventListener("click",function(event){
+        if(document.getElementById("name").value){
+            let name = document.getElementById('name').value;
+            main.removeChild(div);
+            services(name);
+        }
+    });
+}
