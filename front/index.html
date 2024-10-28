@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="sytle.css">
     <link rel="stylesheet" href="slide.css">
-
 </head>
 
 <body>
@@ -33,12 +32,13 @@
                 <div class="slide"><img src="combo.png" alt="">
                     <p>CORTE + BARBA + HIDRATAÇÃO + SOBRANCELHA + LIMPEZA DE PELE</p>
                     <p class="bet"><span>R$ 100,00</span><span>1hr10min</span></p>
-                
+
                 </div>
                 <div class="slide"><img src="combo.png" alt="">
                     <p>CORTE + BARBA + SOBRANCELHA + HIDRATAÇÃO</p>
                     <p class="bet"><span>R$ 85,00</span>
-                    <span>1hr</span></p>
+                        <span>1hr</span>
+                    </p>
                 </div>
                 <div class="slide"><img src="Barba.png" alt="">
                     <p>Barba</p>
@@ -66,29 +66,66 @@
 
                 </div>
             </div>
-            
+
         </div>
-        <div class="input" id="input3" style="display: none;" name = "input3">
+        <div class="input" id="input3" style="display: none;" name="input3">
             <button id='btn3'>Enviar</button>
         </div>
         <div class="user" style="display: none;"></div>
-        
-        <div class="slider-container" style="display: none;">
-            <div class="slider">
-                <div class="slide">Doming</div>
-                <div class="slide">Segunda-feira</div>
-                <div class="slide">Terça-feira</div>
-                <div class="slide">Quarta-eira</div>
-                <div class="slide">Quinta-feira</div>
-                <div class="slide">Sextafeira</div>
-                <div class="slide">Sábado</div>
-                <div class="slide"></div>
+        <div class="agendamento">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide">Doming</div>
+                    <div class="slide">Segunda-feira</div>
+                    <div class="slide">Terça-feira</div>
+                    <div class="slide">Quarta-eira</div>
+                    <div class="slide">Quinta-feira</div>
+                    <div class="slide">Sextafeira</div>
+                    <div class="slide">Sábado</div>
+                    <div class="slide"></div>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="time-slot">08:00</div>
+                <div class="time-slot">08:25</div>
+                <div class="time-slot">08:50</div>
+                <div class="time-slot">09:15</div>
+                <div class="time-slot">09:40</div>
+                <div class="time-slot">10:05</div>
+                <div class="time-slot">10:30</div>
+                <div class="time-slot">10:55</div>
+                <div class="time-slot">11:20</div>
+                <div class="time-slot">11:45</div>
+                <div class="time-slot">14:00</div>
+                <div class="time-slot">14:25</div>
+                <div class="time-slot">14:50</div>
+                <div class="time-slot">15:15</div>
+                <div class="time-slot">15:40</div>
+                <div class="time-slot">16:05</div>
+                <div class="time-slot">16:30</div>
+                <div class="time-slot">16:55</div>
+                <div class="time-slot">17:20</div>
+                <div class="time-slot">17:45</div>
+                <div class="time-slot">18:00</div>
+            </div>
+            <p id = "date">
+                <span>seg</span>
+                <span>28</span>
+                de
+                <span>outubro</span>
+                de 
+                <span></span> --
+                <span>xx:xx</span>
+            </p>
+            <div class="input" id="input3" name="input3">
+                <button id='btn4'>Enviar</button>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
     <script src="slide.js"></script>
+    <script src="agendamento.js"></script>
 </body>
 
 </html>

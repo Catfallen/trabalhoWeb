@@ -43,11 +43,12 @@
     grid-template-columns: repeat(3, 1fr); /* 3 colunas */
     grid-template-rows: repeat(8, 1fr); /* 8 linhas */
     gap: 10px; /* Espaçamento entre as divs */
-    width: 80%; /* Largura do grid */
-    max-width: 800px; /* Largura máxima */
+    width: 100%; /* Largura do grid */
+     /* Largura máxima */
 }
 
 .time-slot {
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,3 +116,30 @@
         padding-right: 8%;
     }   
 }
+
+.agendamento{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.agendamento p{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.agendamento .input{
+    width: 100%;
+    max-width: none;
+}
+
+.agendamento .input button{
+    max-width: none;
+}
+
+

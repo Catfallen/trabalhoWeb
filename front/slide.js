@@ -5,7 +5,7 @@ const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quint
 // Obtendo o nome do dia da semana
 const dayName = days[dayOfWeek];
 const slides = [...document.querySelectorAll(".slide")];
-
+const timeSlots = [...document.getElementsByClassName("time-slot")]; 
 
 
 let c = dayOfWeek;
@@ -51,19 +51,34 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         slot.classList.add('active');
     });
 });
+const semanaDiv = document.querySelectorAll(".slider-container")[1];
 
-[...document.querySelectorAll(".slider-container")[1].getElementsByClassName("slide")].forEach(el=>{
-    el.addEventListener("click",()=>{
-        console.log(el.innerText);
+[...semanaDiv.getElementsByClassName("slide")].forEach(el=>{
+    el.addEventListener("click",(s)=>{
+        [...semanaDiv.getElementsByClassName("slide")].forEach(s=>{
+            s.classList.remove('active');
+            
+        });
+        el.classList.add("active");
+        updateHorario();
     })
 });
 
 
-
+//const horarios = document.getElementsByClassName("time-slot");
 function checkAtivate(){
     return slides.filter(slide =>
         slide.classList.contains("active")
     );
+}
+
+function checkDayAtivate(){
+    return [...semanaDiv.getElementsByClassName("slide")].find(d=>d.classList.contains("active"));
+}
+
+
+function checkHorario(){
+    return timeSlots.find(el=>el.classList.contains("active"));
 }
 
 

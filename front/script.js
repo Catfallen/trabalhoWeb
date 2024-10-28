@@ -5,8 +5,9 @@ let questions = [intro, services];
 let lista = []
 var servicos = []
 window.addEventListener('load', () => {
-    intro();
+    //intro();
     //services("markim");
+    horarios();
 });
 
 function intro() {
@@ -64,7 +65,6 @@ function horarios() {
         text += el.getElementsByTagName("p")[0].innerText + " + ";
     });
     text = text.slice(0, -3);
-    console.log(slides);
     slide.style.display = "none";
     document.getElementById("btn3").style.display = "none";
     let divName = document.getElementsByClassName("user")[1];
@@ -72,8 +72,7 @@ function horarios() {
     divName.innerHTML = `<p class = 'name'>${text}</p>`;
     divName.style.display = "flex";
 
-    document.getElementsByClassName("slider-container")[1].style.display = "flex";
-
+    document.getElementsByClassName("agendamento")[0].style.display = "flex";
 
 
 }
