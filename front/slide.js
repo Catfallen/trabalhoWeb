@@ -1,12 +1,8 @@
+
 const today = new Date();
+
 let dayOfWeek = today.getDay();
 // Array de dias da semana
-const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado","Domingo", "Segunda-feira","Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
-// Obtendo o nome do dia da semana
-const dayName = days[dayOfWeek];
-const slides = [...document.querySelectorAll(".slide")];
-const timeSlots = [...document.getElementsByClassName("time-slot")]; 
-
 
 let c = dayOfWeek;
 [...document.querySelectorAll(".slider-container")[0].getElementsByClassName("slide")].forEach(slide => {
@@ -38,6 +34,7 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         
         // Adiciona a classe 'active' à div clicada
         slot.classList.add('active');
+        updateHorario(checkDayAtivate());
     });
 });
 
@@ -51,8 +48,13 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         slot.classList.add('active');
     });
 });
-const semanaDiv = document.querySelectorAll(".slider-container")[1];
 
+
+let diacontador = new Date().getDay();
+let diaMes = new Date().getDate();
+let mes = data.getMonth();
+spans[2].innerText = mes;
+console.log(mes);
 [...semanaDiv.getElementsByClassName("slide")].forEach(el=>{
     el.addEventListener("click",(s)=>{
         [...semanaDiv.getElementsByClassName("slide")].forEach(s=>{
@@ -60,8 +62,15 @@ const semanaDiv = document.querySelectorAll(".slider-container")[1];
             
         });
         el.classList.add("active");
-        updateHorario();
-    })
+        updateHorario(checkDayAtivate());
+    });
+    
+    el.innerHTML = `<span>${days[diacontador]}</span> <hr> <span>${diaMes}</span>`;
+    diaMes += 1;
+    if (diaMes > getMaxDiaDoMes(mes,data.getFullYear())){
+        diaMes = 1;    
+    }
+    diacontador += 1;
 });
 
 
@@ -81,7 +90,35 @@ function checkHorario(){
     return timeSlots.find(el=>el.classList.contains("active"));
 }
 
+function getMaxDiaDoMes(ano, mes) {
+    // Lembre-se: o mês é 0-indexado em JavaScript (0 para janeiro, 1 para fevereiro, etc.)
+    return new Date(ano, mes, 0).getDate();
+}
 
-
-
-
+function updateHorario(dia){
+    console.log(dia);
+    let text = checkDayAtivate().innerText;
+    spans[0].innerText = text;
+    let span1 = dia.querySelectorAll("span")[1].innerText;
+    let maxdia = getMaxDiaDoMes(mes,data.getFullYear());
+    if(parseInt(span1) < maxdia){
+        let newDate = new Date(data.getFullYear(),data.getMonth()+1,parseInt(span1));
+        console.log(newDate);
+        spans[1].innerText = meses[newDate.getMonth()]; 
+    }else{
+        spans[1].innerText = meses[data.getMonth()];
+    }
+    spans[2].innerText = data.getFullYear();
+    spans[3].innerText = checkHorario().innerText;
+    //alert(checkHorario());
+    /*let fimIndex = [...semanaDiv.querySelectorAll(".slide")].
+    
+    find(el=>{
+        
+        console.log(spanInt);
+        console.log("Max: "+getMaxDiaDoMes(mes,data.getFullYear()));
+        return spanInt > getMaxDiaDoMes(mes,data.getFullYear());
+    });
+    console.log(fimIndex);
+    */  
+}  

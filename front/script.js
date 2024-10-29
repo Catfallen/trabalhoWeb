@@ -1,9 +1,35 @@
 const main = document.getElementsByClassName("main")[0];
 const slide = document.getElementById("slide");
+
+const p = document.getElementById("date");
+const spans = p.getElementsByTagName("span");
+
+const data = new Date();
+//console.log("Data de hoje: "+data.getDay());
+const meses = [
+    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
+
+
+const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado","Domingo", "Segunda-feira","Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
+// Obtendo o nome do dia da semana
+//const dayName = days[dayOfWeek];
+const slides = [...document.querySelectorAll(".slide")];
+const timeSlots = [...document.getElementsByClassName("time-slot")]; 
+
+
+const semanaDiv = document.querySelectorAll(".slider-container")[1];
+
+
+
+
 let index = 0;
 let questions = [intro, services];
 let lista = []
 var servicos = []
+var horario = []
+
 window.addEventListener('load', () => {
     //intro();
     //services("markim");
@@ -72,9 +98,11 @@ function horarios() {
     divName.innerHTML = `<p class = 'name'>${text}</p>`;
     divName.style.display = "flex";
 
-    document.getElementsByClassName("agendamento")[0].style.display = "flex";
-
-
+    let agendamentodiv = document.getElementsByClassName("agendamento")[0]
+    agendamentodiv.style.display = "flex";
+    agendamentodiv.querySelector("button").addEventListener("click",()=>{
+        console.log("rrerer")
+    })
 }
 
 
