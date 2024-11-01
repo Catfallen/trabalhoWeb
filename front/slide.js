@@ -72,7 +72,7 @@ console.log(mes);
     
     let text =  `${new Date().getFullYear()}-10-${diaMes}`;
     console.log(text);
-    diasObj.push(getHoras(text));
+    //diasObj.push(getHoras(text));
     
 
 
@@ -142,6 +142,8 @@ async function getHoras(dia) {
         return data;
     } catch (error) {
         //console.error("Erro:", error.message);
+        await gerarHorarios(dia);
+        return await getHoras(dia);
     }
 }
 
@@ -159,35 +161,23 @@ async function armazenarHorarios(dia) {
         console.log(false);
     }
 }
+async function gerarHorarios(dia) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/gerarHorarios`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ dia }) // Passa o dia no corpo da requisição
+        });
 
-// Exemplo de chamada
-//armazenarHorarios("2024-10-30");
-//armazenarHorarios("2024-10-31");
-
-
-
-
-
-/*
-function getHoras(dia){
-    fetch(`http://localhost:3000/api/horarios?dia=${dia}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
         if (!response.ok) {
-            throw new Error('Erro ao buscar horários disponíveis');
+            throw new Error('Erro ao gerar horários');
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log("Horários disponíveis:", data);
-        return data;
-    })
-    .catch(error => {
-        console.error("Erro:", error.message);
-    });
+
+        const result = await response.json();
+        console.log(result.message); // Exibe mensagem de sucesso ao gerar horários
+    } catch (error) {
+        console.error("Erro ao gerar horários:", error);
+    }
 }
-    */
