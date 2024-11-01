@@ -11,29 +11,25 @@ const meses = [
     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 
-
 const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado","Domingo", "Segunda-feira","Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
 // Obtendo o nome do dia da semana
 //const dayName = days[dayOfWeek];
-const slides = [...document.querySelectorAll(".slide")];
+const slides = [...document.querySelectorAll(".slider-container")[0].querySelectorAll(".slide")];
 const timeSlots = [...document.getElementsByClassName("time-slot")]; 
 
-
 const semanaDiv = document.querySelectorAll(".slider-container")[1];
-
-
-
 
 let index = 0;
 let questions = [intro, services];
 let lista = []
 var servicos = []
 var horario = []
-
+var diasObj = []
 window.addEventListener('load', () => {
-    //intro();
+    intro();
+    
     //services("markim");
-    horarios();
+    //horarios();
 });
 
 function intro() {
@@ -85,9 +81,31 @@ function services(nome) {
 
 }
 
+function putHorarios(dataString,horaString){
+    fetch("http://localhost:3000/api/horarios",{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            data:dataString,
+            hora:horaString
+        })
+    }).then(response=>response.json()).then(data=>{
+        console.log(data);
+        if(data.horarioId){
+            console.log('Horário atualizado com sucesso, ID:'+ data.horarioId);
+        }else{
+            console.log(data.message);
+        }
+    }).catch(error => console.error("erro",error));
+}
+
 function horarios() {
     let text = "";
+    console.log(servicos);
     servicos.forEach(el => {
+        console.log(el);
         text += el.getElementsByTagName("p")[0].innerText + " + ";
     });
     text = text.slice(0, -3);
@@ -101,7 +119,15 @@ function horarios() {
     let agendamentodiv = document.getElementsByClassName("agendamento")[0]
     agendamentodiv.style.display = "flex";
     agendamentodiv.querySelector("button").addEventListener("click",()=>{
-        console.log("rrerer")
+        let dt = new Date()
+        dt.setDate(checkDayAtivate().querySelectorAll("span")[1].innerText);
+        let string = `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`;
+        let horas = spans[3].innerText.replace(":","");
+        console.log(horas);
+        console.log(string);
+        
+        putHorarios(string,horas);
+        
     })
 }
 

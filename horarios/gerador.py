@@ -11,8 +11,9 @@ try:
     data = datetime.now()
     ano = data.year
     mes = data.month
-    day = data.day
+    day = data.day+1
     dataString = f"{ano}-{mes}-{day}"
+    print(dataString)
     cursor = con.cursor()
     for x in range(800,1850,50):
         string = str(x)
@@ -29,6 +30,8 @@ try:
         stringab = a+b
         try:    
             cursor.execute("""insert into horarios (dia,horas,ativo) values (%s,%s,%s);""",(dataString,stringab,0))
+            print(True)
+            print(cursor.rowcount)
         except Exception as error:
             print(error)
     con.commit()

@@ -1,4 +1,5 @@
-
+//const { timeStamp } = require("console");
+var diaHorarios = [];
 const today = new Date();
 
 let dayOfWeek = today.getDay();
@@ -9,6 +10,7 @@ let c = dayOfWeek;
     //slide.innerText = days[c];
     //c+= 1
     slide.addEventListener('click', (event) => {
+        console.log("preto");
         console.log(event.target.innerText)
         let slideIndex = slides.indexOf(slide);
         console.log(slideIndex);
@@ -66,13 +68,22 @@ console.log(mes);
     });
     
     el.innerHTML = `<span>${days[diacontador]}</span> <hr> <span>${diaMes}</span>`;
+
+    
+    let text =  `${new Date().getFullYear()}-10-${diaMes}`;
+    console.log(text);
+    diasObj.push(getHoras(text));
+    
+
+
     diaMes += 1;
     if (diaMes > getMaxDiaDoMes(mes,data.getFullYear())){
         diaMes = 1;    
     }
     diacontador += 1;
 });
-
+[...semanaDiv.getElementsByClassName("slide")][0].classList.add("active");
+updateHorario(checkAtivate());
 
 //const horarios = document.getElementsByClassName("time-slot");
 function checkAtivate(){
@@ -87,6 +98,7 @@ function checkDayAtivate(){
 
 
 function checkHorario(){
+    console.log(timeSlots);
     return timeSlots.find(el=>el.classList.contains("active"));
 }
 
@@ -99,7 +111,7 @@ function updateHorario(dia){
     console.log(dia);
     let text = checkDayAtivate().innerText;
     spans[0].innerText = text;
-    let span1 = dia.querySelectorAll("span")[1].innerText;
+    let span1 = checkDayAtivate().querySelectorAll("span")[1].innerText;
     let maxdia = getMaxDiaDoMes(mes,data.getFullYear());
     if(parseInt(span1) < maxdia){
         let newDate = new Date(data.getFullYear(),data.getMonth()+1,parseInt(span1));
@@ -110,15 +122,72 @@ function updateHorario(dia){
     }
     spans[2].innerText = data.getFullYear();
     spans[3].innerText = checkHorario().innerText;
-    //alert(checkHorario());
-    /*let fimIndex = [...semanaDiv.querySelectorAll(".slide")].
-    
-    find(el=>{
-        
-        console.log(spanInt);
-        console.log("Max: "+getMaxDiaDoMes(mes,data.getFullYear()));
-        return spanInt > getMaxDiaDoMes(mes,data.getFullYear());
-    });
-    console.log(fimIndex);
-    */  
 }  
+
+async function getHoras(dia) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/horarios?dia=${dia}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar horários disponíveis');
+        }
+
+        const data = await response.json();
+        console.log("Horários disponíveis:", data);
+        return data;
+    } catch (error) {
+        //console.error("Erro:", error.message);
+    }
+}
+
+// Declara diaHorarios no escopo global, para que esteja disponível em toda a função
+
+
+async function armazenarHorarios(dia) {
+    try {
+        const horarios = await getHoras(dia);
+        if (horarios) {
+            diaHorarios.push(horarios); // Adiciona os horários disponíveis à lista
+        }
+        console.log("Lista atual de horários:", diaHorarios);
+    } catch (error) {
+        console.log(false);
+    }
+}
+
+// Exemplo de chamada
+//armazenarHorarios("2024-10-30");
+//armazenarHorarios("2024-10-31");
+
+
+
+
+
+/*
+function getHoras(dia){
+    fetch(`http://localhost:3000/api/horarios?dia=${dia}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao buscar horários disponíveis');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Horários disponíveis:", data);
+        return data;
+    })
+    .catch(error => {
+        console.error("Erro:", error.message);
+    });
+}
+    */
