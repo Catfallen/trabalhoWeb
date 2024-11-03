@@ -26,10 +26,9 @@ var servicos = []
 var horario = []
 var diasObj = []
 window.addEventListener('load', () => {
-    intro();
-    
+    //intro();
     //services("markim");
-    //horarios();
+    horarios();
 });
 
 function intro() {
@@ -82,6 +81,7 @@ function services(nome) {
 }
 
 function putHorarios(dataString,horaString){
+    console.log(dataString,horaString);
     fetch("http://localhost:3000/api/horarios",{
         method: "PUT",
         headers: {
@@ -130,6 +130,4 @@ function horarios() {
         
     })
 }
-
-
 //intro();

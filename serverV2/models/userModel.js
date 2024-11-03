@@ -10,12 +10,10 @@ const User = {
     },
     getHorarios: async (dia) => {
         const result = await pool.query("SELECT horas FROM horarios WHERE ativo = 0 AND dia = $1", [dia]);
-    
         if (result.rows.length === 0) {
             return { message: "Nenhum horário disponível encontrado para esta data." };
             
-        }
-        
+        }        
         return result.rows; // Retorna os horários encontrados, caso existam
     },
     
@@ -48,14 +46,6 @@ const User = {
             console.error("Erro ao inserir horários:", error);
         }
     }
-    
-    /*
-    updateHorario: async(data,hora)=>{
-        const result = await pool.query("update horarios set ativo = 1 where data = $1 and hora = $2",[data,hora]);
-        return result.rows[0];
-    }
-    */
-    //postAgendamento: async()
 }
 
 module.exports = User;
