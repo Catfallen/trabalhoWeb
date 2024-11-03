@@ -44,7 +44,7 @@ async function armazenarHorarios(dia) {
         if (horarios) {
             diaHorarios.push({"dia":dia,"horarios":horarios}); // Adiciona os horários disponíveis à lista
         }
-        console.log("Lista atual de horários:", diaHorarios);
+        //console.log("Lista atual de horários:", diaHorarios);
     } catch (error) {
         console.log(false);
     }

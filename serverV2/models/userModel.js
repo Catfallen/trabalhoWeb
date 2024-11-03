@@ -16,6 +16,13 @@ const User = {
         }        
         return result.rows; // Retorna os horários encontrados, caso existam
     },
+    getServicos: async ()=>{
+        const result = await pool.query("SELECT * FROM servicos");
+        if (result.rows.length === 0){
+            return {message: "nenhum serviço encontrado"};
+        }
+        return result.rows;
+    },
     
     postNewUser: async(nome,celular)=>{
         const result = await pool.query("insert into clientes (nome,celular) VALUES ($1,$2) RETURNING * ",[nome,celular]);

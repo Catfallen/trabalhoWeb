@@ -26,9 +26,9 @@ var servicos = []
 var horario = []
 var diasObj = []
 window.addEventListener('load', () => {
-    //intro();
+    intro();
     //services("markim");
-    horarios();
+    //horarios();
 });
 
 function intro() {
@@ -111,6 +111,7 @@ function horarios() {
     text = text.slice(0, -3);
     slide.style.display = "none";
     document.getElementById("btn3").style.display = "none";
+    document.getElementsByClassName("bot")[2].style.display = "block";
     let divName = document.getElementsByClassName("user")[1];
 
     divName.innerHTML = `<p class = 'name'>${text}</p>`;
@@ -127,7 +128,16 @@ function horarios() {
         console.log(string);
         
         putHorarios(string,horas);
-        
-    })
+        document.getElementsByClassName("agendamento")[0].style.display = "none";
+        document.getElementsByClassName("user")[2].innerHTML = `<p class = 'name'>${p.innerText}</p>`;    
+    });
 }
+
+
+function getCellphone(){
+
+}
+
+
+
 //intro();

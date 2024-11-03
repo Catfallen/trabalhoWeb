@@ -44,6 +44,19 @@ const UserController = {
             res.status(500).json({ message: 'Erro ao buscar horários disponíveis' });
         }
     },
+    getServices: async (req, res) => {
+        try {
+            const services = await User.getServicos(); // Supondo que você tenha uma função getServices no modelo User
+            if (services.length === 0) {
+                return res.status(404).json({ message: "Nenhum serviço encontrado." });
+            }
+            return res.status(200).json(services);
+        } catch (error) {
+            console.error("Erro ao buscar serviços:", error);
+            return res.status(500).json({ message: "Erro interno do servidor." });
+        }
+    }
+    ,
     createUser: async (req, res) => {
         const { nome, celular } = req.body;
         try {
