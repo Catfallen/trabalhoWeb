@@ -77,12 +77,31 @@ const UserController = {
                 });
             } else {
                 res.status(404).json({ message: 'Horário não encontrado' });
-            }
+            } 
         } catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Erro ao atualizar o horário' });
         }
     },
+    updateUser: async (req,res)=>{
+        const {nome,celular} = req.body;
+        try{
+            const updatedUser = await User.putUser(nome,celular);
+            if (updatedUser){
+                res.status(200).json({
+                    message: "Nome atualizado",
+                    id: updatedUser.id,
+                    userCell:updatedUser.celular
+                });
+            }else{
+                res.status(404).json({message:"usuario não encontrado"});
+            }
+        }catch(error){
+            console.log(error);
+            res.status(500).json({message:"Erro ao atualizar o usuario"});
+        }
+    }
+    ,
     gerarHorarios: async (req, res) => {
         const { dia } = req.body; // Recebe o parâmetro 'dia' do corpo da requisição
 

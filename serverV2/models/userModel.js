@@ -34,6 +34,10 @@ const User = {
         );
         return result.rows[0];
     },
+    putUser : async(nome,celular) =>{
+        const result = await pool.query("update clientes set nome = $1 where celular = $2 RETURNING *",[nome,celular]);
+        return result.rows[0];
+    },
     gerarHorarios: async (dia) => {
         try {
             for (let x = 800; x < 1850; x += 50) {

@@ -7,69 +7,6 @@ let dayOfWeek = today.getDay();
 
 let c = dayOfWeek;
 
-async function getHoras(dia, tentativas = 3) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/horarios?dia=${dia}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        if (!response.ok) {
-            throw new Error('Erro ao buscar horários disponíveis');
-        }
-        const data = await response.json();
-        console.log("Horários disponíveis:", data);
-        return data;
-    } catch (error) {
-        console.error("Erro:", error.message);
-        if (tentativas > 0) {
-            console.log(`Tentando novamente... (${4 - tentativas} de 3 tentativas restantes)`);
-            await gerarHorarios(dia);
-            return await getHoras(dia, tentativas - 1);
-        } else {
-            console.error("Número máximo de tentativas alcançado. Verifique a conexão ou o servidor.");
-            throw error; // Repassa o erro após o limite de tentativas
-        }
-    }
-}
-
-
-// Declara diaHorarios no escopo global, para que esteja disponível em toda a função
-
-
-async function armazenarHorarios(dia) {
-    try {
-        const horarios = await getHoras(dia);
-        if (horarios) {
-            diaHorarios.push({"dia":dia,"horarios":horarios}); // Adiciona os horários disponíveis à lista
-        }
-        //console.log("Lista atual de horários:", diaHorarios);
-    } catch (error) {
-        console.log(false);
-    }
-}
-async function gerarHorarios(dia) {
-    try {
-        const response = await fetch(`http://localhost:3000/api/gerarHorarios`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ dia }) // Passa o dia no corpo da requisição
-        });
-
-        if (!response.ok) {
-            throw new Error('Erro ao gerar horários');
-        }
-
-        const result = await response.json();
-        console.log(result.message); // Exibe mensagem de sucesso ao gerar horários
-    } catch (error) {
-        console.error("Erro ao gerar horários:", error);
-    }
-}
-
 
 
 
@@ -84,13 +21,14 @@ async function gerarHorarios(dia) {
         if (slideIndex >=0  && slideIndex < 2){
              // Remove a classe 'active' de todas as slides
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            
+            servicos = 0;
             // Adiciona a classe 'active' apenas na slide clicada
             slide.classList.add('active');
         } else if(slideIndex >= 2 && slideIndex <= slides.length){
             slides[0].classList.remove("active");
             slides[1].classList.remove("active");
             slide.classList.add('active');
+            servicos.push(slide);
         }
     });
 });
@@ -221,4 +159,93 @@ function appendHorarios(lista){
             updateHorario();
         });
     });   
+}
+
+
+async function getHoras(dia, tentativas = 3) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/horarios?dia=${dia}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Erro ao buscar horários disponíveis');
+        }
+        const data = await response.json();
+        console.log("Horários disponíveis:", data);
+        return data;
+    } catch (error) {
+        console.error("Erro:", error.message);
+        if (tentativas > 0) {
+            console.log(`Tentando novamente... (${4 - tentativas} de 3 tentativas restantes)`);
+            await gerarHorarios(dia);
+            return await getHoras(dia, tentativas - 1);
+        } else {
+            console.error("Número máximo de tentativas alcançado. Verifique a conexão ou o servidor.");
+            throw error; // Repassa o erro após o limite de tentativas
+        }
+    }
+}
+
+
+// Declara diaHorarios no escopo global, para que esteja disponível em toda a função
+
+
+async function armazenarHorarios(dia) {
+    try {
+        const horarios = await getHoras(dia);
+        if (horarios) {
+            diaHorarios.push({"dia":dia,"horarios":horarios}); // Adiciona os horários disponíveis à lista
+        }
+        //console.log("Lista atual de horários:", diaHorarios);
+    } catch (error) {
+        console.log(false);
+    }
+}
+async function gerarHorarios(dia) {
+    try {
+        const response = await fetch(`http://localhost:3000/api/gerarHorarios`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ dia }) // Passa o dia no corpo da requisição
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao gerar horários');
+        }
+
+        const result = await response.json();
+        console.log(result.message); // Exibe mensagem de sucesso ao gerar horários
+    } catch (error) {
+        console.error("Erro ao gerar horários:", error);
+    }
+}
+
+async function fetchServices() {
+    try {
+        const response = await fetch('http://localhost:3000/api/servicos', { // Substitua '/api/services' pelo endpoint correto
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            if (response.status === 404) {
+                console.log("Nenhum serviço encontrado.");
+            } else {
+                console.log("Erro ao buscar serviços:", response.statusText);
+            }
+            return;
+        }
+
+        const services = await response.json();
+        console.log("Serviços:", services);
+    } catch (error) {
+        console.error("Erro ao consumir a API:", error);
+    }
 }

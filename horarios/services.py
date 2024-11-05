@@ -10,6 +10,17 @@ servicos = [
     {"serviço": "LIMPEZA DE PELE", "valor": 30, "tempo": 15}
 ]
 
+
+servicos = [
+    {"serviço": "Barba", "valor": 30, "tempo": 25},
+    {"serviço": "Corte", "valor": 30, "tempo": 30},
+    {"serviço": "Hidratação", "valor": 20, "tempo": 10},
+    {"serviço": "Sobrancelha", "valor": 10, "tempo": 5},
+    {"serviço": "Corte Navalhado", "valor": 35, "tempo": 30},
+    {"serviço": "LIMPEZA DE PELE", "valor": 30, "tempo": 15}
+]
+
+
 try:
     con = psycopg2.connect(
         host="localhost",        # ou o endereço do seu servidor PostgreSQL
