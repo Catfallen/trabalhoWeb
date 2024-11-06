@@ -1,8 +1,13 @@
+intro();
 const main = document.getElementsByClassName("main")[0];
 const slide = document.getElementById("slide");
 
 const p = document.getElementById("date");
 const spans = p.getElementsByTagName("span");
+
+const slides = [...document.querySelectorAll(".slider-container")[0].querySelectorAll(".slide")];
+const timeSlots = [...document.getElementsByClassName("time-slot")]; 
+const semanaDiv = document.querySelectorAll(".slider-container")[1];
 
 const data = new Date();
 //console.log("Data de hoje: "+data.getDay());
@@ -14,22 +19,20 @@ const meses = [
 const days = ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado","Domingo", "Segunda-feira","Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"];
 // Obtendo o nome do dia da semana
 //const dayName = days[dayOfWeek];
-const slides = [...document.querySelectorAll(".slider-container")[0].querySelectorAll(".slide")];
-const timeSlots = [...document.getElementsByClassName("time-slot")]; 
 
-const semanaDiv = document.querySelectorAll(".slider-container")[1];
 
-let index = 0;
-let questions = [intro, services];
-let lista = []
+//let index = 0;
+//let questions = [intro, services];
+//let lista = []
 var servicos = []
 var horario = []
 var diasObj = []
-window.addEventListener('load', () => {
-    intro();
-    //services("markim");
-    //horarios();
-});
+
+//getServices();
+
+//services("markim");
+//horarios();
+
 
 function intro() {
     let div = document.getElementsByClassName("bot")[0];
@@ -79,6 +82,12 @@ function services(nome) {
     });
 
 }
+
+/*
+function getServices(){
+    let servicosList
+}
+*/
 
 function putHorarios(dataString,horaString){
     console.log(dataString,horaString);
@@ -138,6 +147,25 @@ function getCellphone(){
 
 }
 
+
+async function getServices(){
+    let slider = document.getElementsByClassName("slider")[0];
+    const data = await fetchServices();
+    slider.innerHTML = "";
+    for(let i = 0;i< data.length;i++){
+        let d = data[i];
+        
+        let div = document.createElement("div");
+        div.setAttribute("class","slide");
+        div.innerHTML = `
+                    <img src="${d.id}" alt="">
+                    <p>${d.nome}</p>
+                    <p class="bet"><span>${d.valor}</span><span>${d.tempo}</span></p>
+                `
+        slider.appendChild(div);
+    }
+    return data;
+}
 
 
 //intro();

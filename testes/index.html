@@ -3,37 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Response</title>
-    <script>
-        // Função para consumir a API e mostrar os dados
-        async function getUsers() {
-            try {
-                // Fazendo a requisição GET para a API
-                const response = await fetch('http://localhost:3000/api/users');
-                const users = await response.json();
-
-                // Selecionando o elemento onde a resposta será exibida
-                const userList = document.getElementById('userList');
-
-                // Iterando pelos usuários e criando elementos HTML para exibir
-                users.forEach(user => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `ID: ${user.id}, Nome: ${user.name}, Email: ${user.email}`;
-                    userList.appendChild(listItem);
-                });
-            } catch (error) {
-                console.error('Erro ao buscar usuários:', error);
-            }
-        }
-
-        // Executar a função quando a página carregar
-        window.onload = getUsers;
-    </script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Lista de Usuários</h1>
-    <ul id="userList">
-        <!-- A resposta da API será inserida aqui -->
-    </ul>
+    <div class="main">
+        <a href="#agendamentos" class="link-agendamentos">Ir para Agendamentos</a>
+        <p>Conteúdo da página principal...</p>
+        <!-- conteúdo longo para testar overflow -->
+    </div>
+    
+    <div class="agendamentos" id="agendamentos">
+        <a href="#main" class="link-main">Voltar para a Página Principal</a>
+        <p>Conteúdo da seção de agendamentos...</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

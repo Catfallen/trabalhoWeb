@@ -11,6 +11,7 @@
 
 <body>
     <div class="main">
+        <a href="#agendamentos" class="link-agendamentos">Ir para Agendamentos</a>
         <div class="bot" style="display: none;">
             <p>Olá, tudo bem? Sou a assistente virtual do(a) Bonatto Barbeshop 099 e cuido do agendamento dos serviços
                 dos profissionais dele(a), ok?</p>
@@ -29,6 +30,11 @@
 
         <div id="slide" class="slider-container" style="display: none;">
             <div class="slider">
+                <div class="slide">
+                    <img src="id" alt="">
+                    <p>nome</p>
+                    <p class="bet"><span>valor</span><span>tempo</span></p>
+                </div>
                 <div class="slide"><img src="combo.png" alt="">
                     <p>CORTE + BARBA + HIDRATAÇÃO + SOBRANCELHA + LIMPEZA DE PELE</p>
                     <p class="bet"><span>R$ 100,00</span><span>1hr10min</span></p>
@@ -88,27 +94,6 @@
                 </div>
             </div>
             <div class="grid-container">
-                <div class="time-slot">08:00</div>
-                <div class="time-slot">08:30</div>
-                <div class="time-slot">09:00</div>
-                <div class="time-slot">09:30</div>
-                <div class="time-slot">10:00</div>
-                <div class="time-slot">11:30</div>
-                <div class="time-slot">12:00</div>
-                <div class="time-slot">10:55</div>
-                <div class="time-slot">11:20</div>
-                <div class="time-slot">11:45</div>
-                <div class="time-slot">14:00</div>
-                <div class="time-slot">14:25</div>
-                <div class="time-slot">14:50</div>
-                <div class="time-slot">15:15</div>
-                <div class="time-slot">15:40</div>
-                <div class="time-slot">16:05</div>
-                <div class="time-slot">16:30</div>
-                <div class="time-slot">16:55</div>
-                <div class="time-slot">17:20</div>
-                <div class="time-slot">17:45</div>
-                <div class="time-slot">18:00</div>
             </div>
             <p id = "date">
                 <span>seg</span>
@@ -125,8 +110,18 @@
         <div class="user" style="display: flex;">
 
         </div>
+        <div class="bot" style="display: none;">
+            <p>Perfeito</p>
+        </div>
+        <div class="input" style="display: none;">
+            <button>Meus agendamentos</button>
+            <button>Novo agendamento</button>
+        </div>
     </div>
-
+    <div class="agendamentos" id="agendamentos" style="display: none;">
+        <a href="#main" class="link-main">Voltar para a Página Principal</a>
+        <p>Conteúdo da seção de agendamentos...</p>
+    </div>
     <script src="script.js"></script>
     <script src="slide.js"></script>
     <script src="agendamento.js"></script>

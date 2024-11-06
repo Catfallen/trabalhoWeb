@@ -6,10 +6,6 @@ let dayOfWeek = today.getDay();
 // Array de dias da semana
 
 let c = dayOfWeek;
-
-
-
-
 [...document.querySelectorAll(".slider-container")[0].getElementsByClassName("slide")].forEach(slide => {
     //slide.innerText = days[c];
     //c+= 1
@@ -33,7 +29,7 @@ let c = dayOfWeek;
     });
 });
 
-
+/*
 document.querySelectorAll('.time-slot').forEach(slot => {
     slot.addEventListener('click', () => {
         // Remove a classe 'active' de todas as divs
@@ -44,7 +40,7 @@ document.querySelectorAll('.time-slot').forEach(slot => {
         updateHorario(checkDayAtivate());
     });
 });
-
+*/
 
 document.querySelectorAll('.time-slot').forEach(slot => {
     slot.addEventListener('click', () => {
@@ -85,7 +81,7 @@ spans[2].innerText = mes;
     diacontador+=1;
 });
 [...semanaDiv.getElementsByClassName("slide")][0].classList.add("active");
-updateHorario(checkAtivate());
+//updateHorario(checkAtivate());
 
 //const horarios = document.getElementsByClassName("time-slot");
 function checkAtivate(){
@@ -233,7 +229,6 @@ async function fetchServices() {
                 'Content-Type': 'application/json'
             }
         });
-
         if (!response.ok) {
             if (response.status === 404) {
                 console.log("Nenhum serviço encontrado.");
@@ -242,9 +237,8 @@ async function fetchServices() {
             }
             return;
         }
-
         const services = await response.json();
-        console.log("Serviços:", services);
+        return services;
     } catch (error) {
         console.error("Erro ao consumir a API:", error);
     }

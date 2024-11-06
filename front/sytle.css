@@ -126,3 +126,8 @@ input[type="text"]:focus {
     outline: none;
     /* Remove o contorno padrão */
 }
+
+
+.input button{
+    margin-bottom: 10px;
+}

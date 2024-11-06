@@ -17,8 +17,3 @@ linkMain.addEventListener('click', (e) => {
     agendamentosSection.style.display = 'none';
     mainSection.style.display = 'block';
 });
-
-
-
-
-
